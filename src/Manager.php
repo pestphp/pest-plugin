@@ -82,7 +82,7 @@ final class Manager implements PluginInterface, EventSubscriberInterface, Capabl
     }
 
     /** {@inheritdoc} */
-    public function deactivate(Composer $composer, IOInterface $io)
+    public function deactivate(Composer $composer, IOInterface $io): void
     {
     }
 }
