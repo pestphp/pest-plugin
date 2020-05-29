@@ -4,10 +4,77 @@ declare(strict_types=1);
 
 namespace Pest\Plugin;
 
+use Composer\Composer;
+use Composer\EventDispatcher\EventSubscriberInterface;
+use Composer\IO\IOInterface;
+use Composer\Plugin\Capable;
+use Composer\Plugin\PluginInterface;
+use Pest\Plugin\Commands\Dump;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
 /**
  * @internal
  */
-final class Manager
+final class Manager implements PluginInterface, EventSubscriberInterface, Capable
 {
-    // ..
+    public const PLUGIN_CACHE_FILE = 'pest-plugins.json';
+
+    /**
+     * @var Composer
+     */
+    private $composer;
+
+    /**
+     * @var IOInterface
+     */
+    private $io;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function activate(Composer $composer, IOInterface $io): void
+    {
+        $this->composer = $composer;
+        $this->io       = $io;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function uninstall(Composer $composer, IOInterface $io): void
+    {
+        $vendorDirectory = $composer->getConfig()->get('vendor-dir');
+        $pluginFile      = sprintf('%s/%s', $vendorDirectory, static::PLUGIN_CACHE_FILE);
+
+        if (file_exists($pluginFile)) {
+            unlink($pluginFile);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return array<string, string>
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            'post-autoload-dump' => 'registerPlugins',
+        ];
+    }
+
+    public function getCapabilities()
+    {
+        return [
+            'Composer\Plugin\Capability\CommandProvider' => CommandProvider::class,
+        ];
+    }
+
+    public function registerPlugins(): void
+    {
+        $cmd = new Dump();
+        $cmd->setComposer($this->composer);
+        $cmd->run(new ArrayInput([]), new ConsoleOutput(ConsoleOutput::VERBOSITY_NORMAL, true));
+    }
 }
