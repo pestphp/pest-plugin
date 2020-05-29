@@ -44,10 +44,6 @@ final class DumpCommand extends BaseCommand
             json_encode($plugins, JSON_PRETTY_PRINT)
         );
 
-        $output->writeln(
-            sprintf("\n<fg=black;bg=green;options=bold> PEST </> Discovered %d plugin(s)\n", count($plugins))
-        );
-
         return 0;
     }
 }
