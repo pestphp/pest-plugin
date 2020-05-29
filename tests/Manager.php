@@ -2,8 +2,8 @@
 
 use Composer\Factory;
 use Composer\IO\NullIO;
-use Pest\Plugin\CommandProvider;
 use Pest\Plugin\Manager;
+use Pest\Plugin\PestCommandProvider;
 
 beforeEach(function () {
     $this->manager = new Manager();
@@ -33,5 +33,5 @@ it('subscribes for the post-autoload-dump event', function () {
 });
 
 it('has the capability for the dump command', function () {
-    assertContains(CommandProvider::class, $this->manager->getCapabilities());
+    assertContains(PestCommandProvider::class, $this->manager->getCapabilities());
 });

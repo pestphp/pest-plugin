@@ -2,7 +2,7 @@
 
 use Composer\Factory;
 use Composer\IO\NullIO;
-use Pest\Plugin\Commands\Dump;
+use Pest\Plugin\Commands\DumpCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Tests\Stubs\Plugin1;
@@ -11,11 +11,11 @@ use Tests\Stubs\Plugin2;
 beforeEach(function () {
     $this->io = new NullIO();
     $this->composer = (new Factory())->createComposer($this->io);
-    $this->dump = new Dump();
+    $this->dump = new DumpCommand();
     $this->dump->setComposer($this->composer);
 });
 
-it('exists')->assertTrue(class_exists(Dump::class));
+it('exists')->assertTrue(class_exists(DumpCommand::class));
 
 it('should find a single plugin with one plugin class', function () {
     fakePlugin('pestphp/plugin1', [Plugin1::class]);

@@ -36,7 +36,7 @@ final class Loader
     {
         return array_values(
             array_filter(
-                static::getPluginInstances(),
+                self::getPluginInstances(),
                 function ($plugin) use ($interface): bool {
                     return $plugin instanceof $interface;
                 }
@@ -46,8 +46,8 @@ final class Loader
 
     public static function reset(): void
     {
-        static::$loaded    = false;
-        static::$instances = [];
+        self::$loaded    = false;
+        self::$instances = [];
     }
 
     /**
@@ -57,7 +57,7 @@ final class Loader
      */
     private static function getPluginInstances(): array
     {
-        if (!static::$loaded) {
+        if (!self::$loaded) {
             $cachedPlugins = sprintf('%s/vendor/pest-plugins.json', getcwd());
 
             if (!file_exists($cachedPlugins)) {
@@ -75,15 +75,15 @@ final class Loader
                 $pluginClasses = [];
             }
 
-            static::$instances = array_map(
+            self::$instances = array_map(
                 function ($class) {
                     return new $class();
                 },
                 $pluginClasses
             );
-            static::$loaded = true;
+            self::$loaded = true;
         }
 
-        return static::$instances;
+        return self::$instances;
     }
 }

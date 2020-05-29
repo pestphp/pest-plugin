@@ -9,7 +9,7 @@ use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\IO\IOInterface;
 use Composer\Plugin\Capable;
 use Composer\Plugin\PluginInterface;
-use Pest\Plugin\Commands\Dump;
+use Pest\Plugin\Commands\DumpCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
@@ -18,6 +18,9 @@ use Symfony\Component\Console\Output\ConsoleOutput;
  */
 final class Manager implements PluginInterface, EventSubscriberInterface, Capable
 {
+    /**
+     * Holds the pest plugins file.
+     */
     public const PLUGIN_CACHE_FILE = 'pest-plugins.json';
 
     /**
@@ -45,7 +48,7 @@ final class Manager implements PluginInterface, EventSubscriberInterface, Capabl
     public function uninstall(Composer $composer, IOInterface $io): void
     {
         $vendorDirectory = $composer->getConfig()->get('vendor-dir');
-        $pluginFile      = sprintf('%s/%s', $vendorDirectory, static::PLUGIN_CACHE_FILE);
+        $pluginFile      = sprintf('%s/%s', $vendorDirectory, self::PLUGIN_CACHE_FILE);
 
         if (file_exists($pluginFile)) {
             unlink($pluginFile);
@@ -67,13 +70,13 @@ final class Manager implements PluginInterface, EventSubscriberInterface, Capabl
     public function getCapabilities()
     {
         return [
-            'Composer\Plugin\Capability\CommandProvider' => CommandProvider::class,
+            'Composer\Plugin\Capability\CommandProvider' => PestCommandProvider::class,
         ];
     }
 
     public function registerPlugins(): void
     {
-        $cmd = new Dump();
+        $cmd = new DumpCommand();
         $cmd->setComposer($this->composer);
         $cmd->run(new ArrayInput([]), new ConsoleOutput(ConsoleOutput::VERBOSITY_NORMAL, true));
     }

@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @internal
  */
-final class Dump extends BaseCommand
+final class DumpCommand extends BaseCommand
 {
     protected function configure(): void
     {
@@ -21,7 +21,6 @@ final class Dump extends BaseCommand
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $output->writeln('<info>Pest:</info> looking for plugins...');
         $vendorDirectory = $this->getComposer()->getConfig()->get('vendor-dir');
         $plugins         = [];
 
@@ -40,16 +39,13 @@ final class Dump extends BaseCommand
             }
         }
 
-        $output->writeln(
-            sprintf(
-                '<info>Pest:</info> found and registered %d plugin(s)',
-                count($plugins)
-            )
-        );
-
         file_put_contents(
             implode(DIRECTORY_SEPARATOR, [$vendorDirectory, Manager::PLUGIN_CACHE_FILE]),
             json_encode($plugins, JSON_PRETTY_PRINT)
+        );
+
+        $output->writeln(
+            sprintf("\n  <fg=black;bg=green;options=bold> PEST </> Found and registered %d plugin(s)", count($plugins))
         );
 
         return 0;

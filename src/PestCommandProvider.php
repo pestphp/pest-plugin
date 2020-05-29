@@ -5,17 +5,20 @@ declare(strict_types=1);
 namespace Pest\Plugin;
 
 use Composer\Plugin\Capability\CommandProvider as CommandProviderCapability;
-use Pest\Plugin\Commands\Dump;
+use Pest\Plugin\Commands\DumpCommand;
 
 /**
  * @internal
  */
-final class CommandProvider implements CommandProviderCapability
+final class PestCommandProvider implements CommandProviderCapability
 {
+    /**
+     * @return array<int, DumpCommand>
+     */
     public function getCommands(): array
     {
         return [
-            new Dump(),
+            new DumpCommand(),
         ];
     }
 }
