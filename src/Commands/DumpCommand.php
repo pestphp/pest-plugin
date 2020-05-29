@@ -45,7 +45,7 @@ final class DumpCommand extends BaseCommand
         );
 
         $output->writeln(
-            sprintf("\n  <fg=black;bg=green;options=bold> PEST </> Found and registered %d plugin(s)", count($plugins))
+            sprintf("\n<fg=black;bg=green;options=bold> PEST </> Discovered %d plugin(s)\n", count($plugins))
         );
 
         return 0;
