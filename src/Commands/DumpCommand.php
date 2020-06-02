@@ -24,19 +24,12 @@ final class DumpCommand extends BaseCommand
         $vendorDirectory = $this->getComposer()->getConfig()->get('vendor-dir');
         $plugins         = [];
 
-        $repository       = $this->getComposer()->getRepositoryManager()->getLocalRepository();
-        $requiredPackages = array_merge(
-            $this->getComposer()->getPackage()->getRequires(),
-            $this->getComposer()->getPackage()->getDevRequires()
-        );
+        $packages = $this->getComposer()->getRepositoryManager()->getLocalRepository()->getCanonicalPackages();
 
-        foreach ($requiredPackages as $link) {
-            $package = $repository->findPackage($link->getTarget(), $link->getConstraint() ?? '');
-
-            if ($package !== null) {
-                $extra   = $package->getExtra();
-                $plugins = array_merge($plugins, $extra['pest']['plugins'] ?? []);
-            }
+        /** @var \Composer\Package\PackageInterface $package */
+        foreach ($packages as $package) {
+            $extra   = $package->getExtra();
+            $plugins = array_merge($plugins, $extra['pest']['plugins'] ?? []);
         }
 
         file_put_contents(
