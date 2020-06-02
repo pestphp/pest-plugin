@@ -80,4 +80,9 @@ final class Manager implements PluginInterface, EventSubscriberInterface, Capabl
         $cmd->setComposer($this->composer);
         $cmd->run(new ArrayInput([]), new ConsoleOutput(ConsoleOutput::VERBOSITY_NORMAL, true));
     }
+
+    /** {@inheritdoc} */
+    public function deactivate(Composer $composer, IOInterface $io): void
+    {
+    }
 }
