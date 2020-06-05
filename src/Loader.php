@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Pest\Plugin;
 
 use JsonException;
+use Pest\Support\Container;
 
 /**
  * @internal
@@ -59,6 +60,7 @@ final class Loader
     {
         if (!self::$loaded) {
             $cachedPlugins = sprintf('%s/vendor/pest-plugins.json', getcwd());
+            $container = Container::getInstance();
 
             if (!file_exists($cachedPlugins)) {
                 return [];
@@ -76,8 +78,8 @@ final class Loader
             }
 
             self::$instances = array_map(
-                function ($class) {
-                    return new $class();
+                function ($class) use ($container) {
+                    return $container->get($class);
                 },
                 $pluginClasses
             );
