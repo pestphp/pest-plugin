@@ -15,7 +15,8 @@
     "type": "composer-plugin",
     "require": {
         "php": "^7.3",
-        "composer-plugin-api": "^1.1||^2.0"
+        "composer-plugin-api": "^1.1||^2.0",
+        "pestphp/pest": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -31,7 +32,6 @@
         "composer/composer": "^1.10",
         "ergebnis/phpstan-rules": "^0.14.4",
         "friendsofphp/php-cs-fixer": "^2.16.3",
-        "pestphp/pest": "^0.1.5",
         "phpstan/phpstan": "^0.12.25",
         "phpstan/phpstan-strict-rules": "^0.12.2",
         "rector/rector": "^0.7.25",
@@ -41,7 +41,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
-        "class": "Pest\\Plugin\\Manager"
+        "class": "Pest\\Plugin\\Manager",
+        "branch-alias": {
+            "dev-master": "dev-feature/add-container"
+        }
     },
     "config": {
         "sort-packages": true,
@@ -57,11 +60,5 @@
             "@test:types",
             "@test:unit"
         ]
-    },
-    "repositories": {
-        "pest": {
-            "type": "vcs",
-            "url": "https://github.com/pestphp/pest"
-        }
     }
 }
