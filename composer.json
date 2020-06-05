@@ -17,6 +17,9 @@
         "php": "^7.3",
         "composer-plugin-api": "^1.1||^2.0"
     },
+    "conflict": {
+        "pestphp/pest": "<0.2"
+    },
     "autoload": {
         "psr-4": {
             "Pest\\Plugin\\": "src/"
