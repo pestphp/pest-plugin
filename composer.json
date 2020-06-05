@@ -15,8 +15,10 @@
     "type": "composer-plugin",
     "require": {
         "php": "^7.3",
-        "composer-plugin-api": "^1.1||^2.0",
-        "pestphp/pest": "dev-master"
+        "composer-plugin-api": "^1.1||^2.0"
+    },
+    "conflict": {
+        "pestphp/pest": "<0.2"
     },
     "autoload": {
         "psr-4": {
@@ -41,10 +43,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
-        "class": "Pest\\Plugin\\Manager",
         "branch-alias": {
-            "dev-master": "dev-feature/add-container"
-        }
+            "dev-master": "0.2.x-dev"
+        },
+        "class": "Pest\\Plugin\\Manager"
     },
     "config": {
         "sort-packages": true,
