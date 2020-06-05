@@ -44,6 +44,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
+        "branch-alias": {
+            "dev-master": "0.2.x-dev"
+        },
         "class": "Pest\\Plugin\\Manager"
     },
     "config": {
@@ -60,11 +63,5 @@
             "@test:types",
             "@test:unit"
         ]
-    },
-    "repositories": {
-        "pest": {
-            "type": "vcs",
-            "url": "https://github.com/pestphp/pest"
-        }
     }
 }
