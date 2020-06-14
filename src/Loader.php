@@ -60,7 +60,7 @@ final class Loader
     {
         if (!self::$loaded) {
             $cachedPlugins = sprintf('%s/vendor/pest-plugins.json', getcwd());
-            $container = Container::getInstance();
+            $container     = Container::getInstance();
 
             if (!file_exists($cachedPlugins)) {
                 return [];
