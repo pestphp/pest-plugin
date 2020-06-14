@@ -24,8 +24,10 @@ it('should find a single plugin with one plugin class', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    assertCount(1, $plugins);
-    assertEquals(Plugin1::class, $plugins[0]);
+    assertCount(3, $plugins);
+
+    // Init + Coverage + Plugin1
+    assertEquals(Plugin1::class, $plugins[2]);
 });
 
 it('should find a single plugin with multiple plugin classes', function () {
@@ -35,9 +37,10 @@ it('should find a single plugin with multiple plugin classes', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    assertCount(2, $plugins);
-    assertEquals(Plugin1::class, $plugins[0]);
-    assertEquals(Plugin2::class, $plugins[1]);
+    // Init + Coverage + Plugin1 + Plugin2
+    assertCount(4, $plugins);
+    assertEquals(Plugin1::class, $plugins[2]);
+    assertEquals(Plugin2::class, $plugins[3]);
 });
 
 it('should find multiple plugins', function () {
@@ -48,9 +51,10 @@ it('should find multiple plugins', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    assertCount(2, $plugins);
-    assertEquals(Plugin1::class, $plugins[0]);
-    assertEquals(Plugin2::class, $plugins[1]);
+    // Init + Coverage + Plugin1 + Plugin2
+    assertCount(4, $plugins);
+    assertEquals(Plugin1::class, $plugins[2]);
+    assertEquals(Plugin2::class, $plugins[3]);
 });
 
 it('should find a dev plugin', function () {
@@ -60,6 +64,7 @@ it('should find a dev plugin', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    assertCount(1, $plugins);
-    assertEquals(Plugin1::class, $plugins[0]);
+    // Init + Coverage + Plugin1
+    assertCount(3, $plugins);
+    assertEquals(Plugin1::class, $plugins[2]);
 });
