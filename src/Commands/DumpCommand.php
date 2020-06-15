@@ -26,6 +26,8 @@ final class DumpCommand extends BaseCommand
 
         $packages = $this->getComposer()->getRepositoryManager()->getLocalRepository()->getCanonicalPackages();
 
+        $packages[] = $this->getComposer()->getPackage();
+
         /** @var \Composer\Package\PackageInterface $package */
         foreach ($packages as $package) {
             $extra   = $package->getExtra();

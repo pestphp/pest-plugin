@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Tests\Stubs\Plugin1;
 use Tests\Stubs\Plugin2;
+use Tests\Stubs\Plugin3;
 
 beforeEach(function () {
     $this->io = new NullIO();
@@ -24,10 +25,7 @@ it('should find a single plugin with one plugin class', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    assertCount(3, $plugins);
-
-    // Init + Coverage + Plugin1
-    assertEquals(Plugin1::class, $plugins[2]);
+    assertContains(Plugin1::class, $plugins);
 });
 
 it('should find a single plugin with multiple plugin classes', function () {
@@ -37,10 +35,8 @@ it('should find a single plugin with multiple plugin classes', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    // Init + Coverage + Plugin1 + Plugin2
-    assertCount(4, $plugins);
-    assertEquals(Plugin1::class, $plugins[2]);
-    assertEquals(Plugin2::class, $plugins[3]);
+    assertContains(Plugin1::class, $plugins);
+    assertContains(Plugin2::class, $plugins);
 });
 
 it('should find multiple plugins', function () {
@@ -51,10 +47,8 @@ it('should find multiple plugins', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    // Init + Coverage + Plugin1 + Plugin2
-    assertCount(4, $plugins);
-    assertEquals(Plugin1::class, $plugins[2]);
-    assertEquals(Plugin2::class, $plugins[3]);
+    assertContains(Plugin1::class, $plugins);
+    assertContains(Plugin2::class, $plugins);
 });
 
 it('should find a dev plugin', function () {
@@ -64,7 +58,23 @@ it('should find a dev plugin', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    // Init + Coverage + Plugin1
-    assertCount(3, $plugins);
-    assertEquals(Plugin1::class, $plugins[2]);
+    assertContains(Plugin1::class, $plugins);
+});
+
+it('should find a plugin during development', function () {
+    $composer = test()->composer;
+    $extra = $composer->getPackage()->getExtra();
+
+    $extra['pest'] = [
+        'plugins' => [
+            Plugin3::class,
+        ],
+    ];
+
+    $composer->getPackage()->setExtra($extra);
+
+    $this->dump->run(new ArrayInput([]), new NullOutput());
+    $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
+
+    assertContains(Plugin3::class, $plugins);
 });
