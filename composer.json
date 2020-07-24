@@ -18,7 +18,7 @@
         "composer-plugin-api": "^1.1||^2.0"
     },
     "conflict": {
-        "pestphp/pest": "<0.2"
+        "pestphp/pest": "<0.3"
     },
     "autoload": {
         "psr-4": {
@@ -33,13 +33,13 @@
     "require-dev": {
         "composer/composer": "^1.10",
         "pestphp/pest-dev-tools": "dev-master",
-        "pestphp/pest": "^0.2"
+        "pestphp/pest": "^0.3"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2.x-dev"
+            "dev-master": "0.3.x-dev"
         },
         "class": "Pest\\Plugin\\Manager"
     },
