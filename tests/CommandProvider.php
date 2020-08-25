@@ -9,6 +9,6 @@ it('returns the dump command', function () {
     $commandProvider = new PestCommandProvider();
     $commands = $commandProvider->getCommands();
 
-    assertCount(1, $commands);
-    assertInstanceOf(DumpCommand::class, $commands[0]);
+    $this->assertCount(1, $commands);
+    $this->assertInstanceOf(DumpCommand::class, $commands[0]);
 });

@@ -70,7 +70,7 @@ final class Manager implements PluginInterface, EventSubscriberInterface, Capabl
     public function getCapabilities()
     {
         return [
-            'Composer\Plugin\Capability\CommandProvider' => PestCommandProvider::class,
+            \Composer\Plugin\Capability\CommandProvider::class => PestCommandProvider::class,
         ];
     }
 

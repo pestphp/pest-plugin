@@ -25,7 +25,7 @@ it('should find a single plugin with one plugin class', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    assertContains(Plugin1::class, $plugins);
+    $this->assertContains(Plugin1::class, $plugins);
 });
 
 it('should find a single plugin with multiple plugin classes', function () {
@@ -35,8 +35,8 @@ it('should find a single plugin with multiple plugin classes', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    assertContains(Plugin1::class, $plugins);
-    assertContains(Plugin2::class, $plugins);
+    $this->assertContains(Plugin1::class, $plugins);
+    $this->assertContains(Plugin2::class, $plugins);
 });
 
 it('should find multiple plugins', function () {
@@ -47,8 +47,8 @@ it('should find multiple plugins', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    assertContains(Plugin1::class, $plugins);
-    assertContains(Plugin2::class, $plugins);
+    $this->assertContains(Plugin1::class, $plugins);
+    $this->assertContains(Plugin2::class, $plugins);
 });
 
 it('should find a dev plugin', function () {
@@ -58,7 +58,7 @@ it('should find a dev plugin', function () {
 
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    assertContains(Plugin1::class, $plugins);
+    $this->assertContains(Plugin1::class, $plugins);
 });
 
 it('should find a plugin during development', function () {
@@ -76,5 +76,5 @@ it('should find a plugin during development', function () {
     $this->dump->run(new ArrayInput([]), new NullOutput());
     $plugins = json_decode(file_get_contents('vendor/pest-plugins.json'), true);
 
-    assertContains(Plugin3::class, $plugins);
+    $this->assertContains(Plugin3::class, $plugins);
 });

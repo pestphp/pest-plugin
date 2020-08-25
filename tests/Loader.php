@@ -30,28 +30,28 @@ it('exists')->assertTrue(class_exists(Loader::class));
 it('returns a single plugin instance', function () {
     $plugins = Loader::getPlugins(DummyInterface::class);
 
-    assertCount(1, $plugins);
-    assertInstanceOf(DummyInterface::class, $plugins[0]);
+    $this->assertCount(1, $plugins);
+    $this->assertInstanceOf(DummyInterface::class, $plugins[0]);
 });
 
 it('returns multiple plugin instances', function () {
     $plugins = Loader::getPlugins(AnotherDummyInterface::class);
 
-    assertCount(2, $plugins);
-    assertInstanceOf(AnotherDummyInterface::class, $plugins[0]);
-    assertInstanceOf(AnotherDummyInterface::class, $plugins[1]);
+    $this->assertCount(2, $plugins);
+    $this->assertInstanceOf(AnotherDummyInterface::class, $plugins[0]);
+    $this->assertInstanceOf(AnotherDummyInterface::class, $plugins[1]);
 });
 
 it('return no plugins when plugin cache file is missing', function () {
     unlink(sprintf('%s/vendor/pest-plugins.json', getcwd()));
     $plugins = Loader::getPlugins(DummyInterface::class);
 
-    assertEmpty($plugins);
+    $this->assertEmpty($plugins);
 });
 
 it('returns no plugins when plugin cache file does not contain valid json', function () {
     file_put_contents(sprintf('%s/vendor/pest-plugins.json', getcwd()), 'abcd');
     $plugins = Loader::getPlugins(DummyInterface::class);
 
-    assertEmpty($plugins);
+    $this->assertEmpty($plugins);
 });

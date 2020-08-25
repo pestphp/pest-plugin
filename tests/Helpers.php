@@ -5,7 +5,7 @@ use Composer\Package\Link;
 use Composer\Semver\Constraint\Constraint;
 
 /**
- * creates the plugin requirement in the composer instance.
+ * Creates the plugin requirement in the composer instance.
  *
  * @param string $pluginName the name of the plugin to fake
  * @param array<int, string> plugin classes to load

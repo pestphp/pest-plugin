@@ -18,20 +18,20 @@ it('removes the cached plugins file on uninstall', function () {
 
     $this->manager->uninstall($this->composer, $this->io);
 
-    assertFileDoesNotExist('vendor/pest-plugins.json');
+    $this->assertFileDoesNotExist('vendor/pest-plugins.json');
 });
 
 it('should create the cached plugins file', function () {
     $this->manager->activate($this->composer, $this->io);
     $this->manager->registerPlugins();
 
-    assertFileExists('vendor/pest-plugins.json');
+    $this->assertFileExists('vendor/pest-plugins.json');
 });
 
 it('subscribes for the post-autoload-dump event', function () {
-    assertArrayHasKey('post-autoload-dump', $this->manager->getSubscribedEvents());
+    $this->assertArrayHasKey('post-autoload-dump', $this->manager->getSubscribedEvents());
 });
 
 it('has the capability for the dump command', function () {
-    assertContains(PestCommandProvider::class, $this->manager->getCapabilities());
+    $this->assertContains(PestCommandProvider::class, $this->manager->getCapabilities());
 });
