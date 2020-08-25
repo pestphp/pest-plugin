@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [v0.3.0 (2020-08-25)](https://github.com/pestphp/pest-plugin/compare/v0.2.1...v0.3.0)
+### Added
+- Support to Pest v0.3
+
 ## [v0.2.1 (2020-06-16)](https://github.com/pestphp/pest-plugin/compare/v0.2.0...v0.2.1)
 ### Added
 - Detection of local development plugins ([#10](https://github.com/pestphp/pest-plugin/pull/10))
