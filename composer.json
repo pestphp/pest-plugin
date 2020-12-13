@@ -39,7 +39,7 @@
     "prefer-stable": true,
     "extra": {
         "branch-alias": {
-            "dev-master": "0.4.x-dev"
+            "dev-master": "0.3.x-dev"
         },
         "class": "Pest\\Plugin\\Manager"
     },
@@ -48,8 +48,8 @@
         "preferred-install": "dist"
     },
     "scripts": {
-        "lint": "rector process src && php-cs-fixer fix -v",
-        "test:lint": "php-cs-fixer fix -v --dry-run && rector process src --dry-run",
+        "lint": "php-cs-fixer fix -v",
+        "test:lint": "php-cs-fixer fix -v --dry-run",
         "test:types": "phpstan analyse --ansi",
         "test:unit": "pest --colors=always",
         "test": [
