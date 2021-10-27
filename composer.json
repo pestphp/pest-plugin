@@ -31,7 +31,7 @@
         }
     },
     "require-dev": {
-        "composer/composer": "^2",
+        "composer/composer": "^1.10|^2.0",
         "pestphp/pest-dev-tools": "dev-master",
         "pestphp/pest": "^1.0"
     },
