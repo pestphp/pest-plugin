@@ -23,8 +23,9 @@ final class DumpCommand extends BaseCommand
     {
         $composer = $this->getComposer();
 
-        if ($composer == null)
+        if ($composer == null) {
             throw new \RuntimeException('Could not get Composer\Composer instance.');
+        }
 
         $vendorDirectory = $composer->getConfig()->get('vendor-dir');
         $plugins         = [];
