@@ -37,6 +37,7 @@ final class DumpCommand extends BaseCommand
         /** @var \Composer\Package\PackageInterface $package */
         foreach ($packages as $package) {
             $extra   = $package->getExtra();
+            // @phpstan-ignore-next-line
             $plugins = array_merge($plugins, $extra['pest']['plugins'] ?? []);
         }
 

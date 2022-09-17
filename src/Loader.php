@@ -13,14 +13,14 @@ use Pest\Support\Container;
 final class Loader
 {
     /**
-     * determines if the plugin cache file was loaded.
+     * Determines if the plugin cache file was loaded.
      *
      * @var bool
      */
     private static $loaded = false;
 
     /**
-     * holds the list of cached plugin instances.
+     * Holds the list of cached plugin instances.
      *
      * @var array<int, object>
      */
@@ -72,6 +72,7 @@ final class Loader
             }
 
             try {
+                /** @var array<int, string>  $pluginClasses */
                 $pluginClasses = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
             } catch (JsonException $ex) {
                 $pluginClasses = [];

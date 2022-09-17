@@ -31,9 +31,9 @@
         }
     },
     "require-dev": {
-        "composer/composer": "^1.10.23|^2.1.9",
+        "composer/composer": "^2.4.2",
         "pestphp/pest-dev-tools": "dev-master",
-        "pestphp/pest": "^1.0"
+        "pestphp/pest": "^1.22.1|^2.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

@@ -29,17 +29,11 @@ final class Manager implements PluginInterface, EventSubscriberInterface, Capabl
     private $composer;
 
     /**
-     * @var IOInterface
-     */
-    private $io;
-
-    /**
      * {@inheritdoc}
      */
     public function activate(Composer $composer, IOInterface $io): void
     {
         $this->composer = $composer;
-        $this->io       = $io;
     }
 
     /**
@@ -47,6 +41,7 @@ final class Manager implements PluginInterface, EventSubscriberInterface, Capabl
      */
     public function uninstall(Composer $composer, IOInterface $io): void
     {
+        /** @var string $vendorDirectory */
         $vendorDirectory = $composer->getConfig()->get('vendor-dir');
         $pluginFile      = sprintf('%s/%s', $vendorDirectory, self::PLUGIN_CACHE_FILE);
 
