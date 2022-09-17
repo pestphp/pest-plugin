@@ -21,12 +21,18 @@ final class DumpCommand extends BaseCommand
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $vendorDirectory = $this->getComposer()->getConfig()->get('vendor-dir');
+        $composer = $this->getComposer();
+
+        if ($composer === null) {
+            throw new \RuntimeException('Could not get Composer\Composer instance.');
+        }
+
+        $vendorDirectory = $composer->getConfig()->get('vendor-dir');
         $plugins         = [];
 
-        $packages = $this->getComposer()->getRepositoryManager()->getLocalRepository()->getCanonicalPackages();
+        $packages = $composer->getRepositoryManager()->getLocalRepository()->getCanonicalPackages();
 
-        $packages[] = $this->getComposer()->getPackage();
+        $packages[] = $composer->getPackage();
 
         /** @var \Composer\Package\PackageInterface $package */
         foreach ($packages as $package) {
