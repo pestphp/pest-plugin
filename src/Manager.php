@@ -43,7 +43,7 @@ final class Manager implements PluginInterface, EventSubscriberInterface, Capabl
     {
         /** @var string $vendorDirectory */
         $vendorDirectory = $composer->getConfig()->get('vendor-dir');
-        $pluginFile      = sprintf('%s/%s', $vendorDirectory, self::PLUGIN_CACHE_FILE);
+        $pluginFile = sprintf('%s/%s', $vendorDirectory, self::PLUGIN_CACHE_FILE);
 
         if (file_exists($pluginFile)) {
             unlink($pluginFile);

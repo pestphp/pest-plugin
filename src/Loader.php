@@ -29,8 +29,7 @@ final class Loader
     /**
      * returns an array of pest plugins to execute.
      *
-     * @param string $interface the interface for the hook to execute
-     *
+     * @param  string  $interface the interface for the hook to execute
      * @return array<int, object> list of plugins
      */
     public static function getPlugins(string $interface): array
@@ -47,7 +46,7 @@ final class Loader
 
     public static function reset(): void
     {
-        self::$loaded    = false;
+        self::$loaded = false;
         self::$instances = [];
     }
 
@@ -58,11 +57,11 @@ final class Loader
      */
     private static function getPluginInstances(): array
     {
-        if (!self::$loaded) {
+        if (! self::$loaded) {
             $cachedPlugins = sprintf('%s/vendor/pest-plugins.json', getcwd());
-            $container     = Container::getInstance();
+            $container = Container::getInstance();
 
-            if (!file_exists($cachedPlugins)) {
+            if (! file_exists($cachedPlugins)) {
                 return [];
             }
 
@@ -72,7 +71,7 @@ final class Loader
             }
 
             try {
-                /** @var array<int, string>  $pluginClasses */
+                /** @var array<int, class-string>  $pluginClasses */
                 $pluginClasses = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
             } catch (JsonException $ex) {
                 $pluginClasses = [];
@@ -84,6 +83,7 @@ final class Loader
                 },
                 $pluginClasses
             );
+
             self::$loaded = true;
         }
 

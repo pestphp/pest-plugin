@@ -28,7 +28,7 @@ final class DumpCommand extends BaseCommand
         }
 
         $vendorDirectory = $composer->getConfig()->get('vendor-dir');
-        $plugins         = [];
+        $plugins = [];
 
         $packages = $composer->getRepositoryManager()->getLocalRepository()->getCanonicalPackages();
 
@@ -36,7 +36,7 @@ final class DumpCommand extends BaseCommand
 
         /** @var \Composer\Package\PackageInterface $package */
         foreach ($packages as $package) {
-            $extra   = $package->getExtra();
+            $extra = $package->getExtra();
             // @phpstan-ignore-next-line
             $plugins = array_merge($plugins, $extra['pest']['plugins'] ?? []);
         }

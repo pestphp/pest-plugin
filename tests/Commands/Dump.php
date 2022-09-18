@@ -10,9 +10,9 @@ use Tests\Stubs\Plugin2;
 use Tests\Stubs\Plugin3;
 
 beforeEach(function () {
-    $this->io       = new NullIO();
+    $this->io = new NullIO();
     $this->composer = (new Factory())->createComposer($this->io);
-    $this->dump     = new DumpCommand();
+    $this->dump = new DumpCommand();
     $this->dump->setComposer($this->composer);
 });
 
@@ -63,7 +63,7 @@ it('should find a dev plugin', function () {
 
 it('should find a plugin during development', function () {
     $composer = test()->composer;
-    $extra    = $composer->getPackage()->getExtra();
+    $extra = $composer->getPackage()->getExtra();
 
     $extra['pest'] = [
         'plugins' => [

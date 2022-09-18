@@ -7,9 +7,9 @@ use Composer\Semver\Constraint\Constraint;
 /**
  * Creates the plugin requirement in the composer instance.
  *
- * @param string $pluginName the name of the plugin to fake
+ * @param  string  $pluginName the name of the plugin to fake
  * @param array<int, string> plugin classes to load
- * @param bool $dev determines if it should be added as a dev dependency
+ * @param  bool  $dev determines if it should be added as a dev dependency
  */
 function fakePlugin(string $pluginName, array $classes, bool $dev = false): void
 {
@@ -35,7 +35,7 @@ function fakePlugin(string $pluginName, array $classes, bool $dev = false): void
     }
 
     $repository = $test->composer->getRepositoryManager()->getLocalRepository();
-    $package    = new CompletePackage($pluginName, '9999999-dev', 'dev-master');
+    $package = new CompletePackage($pluginName, '9999999-dev', 'dev-master');
     $package->setExtra([
         'pest' => [
             'plugins' => $classes,
