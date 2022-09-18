@@ -15,7 +15,7 @@
     "type": "composer-plugin",
     "require": {
         "php": "^7.3 || ^8.0",
-        "composer-plugin-api": "^1.1 || ^2.0"
+        "composer-plugin-api": "^1.1.0 || ^2.0.0"
     },
     "conflict": {
         "pestphp/pest": "<1.0"
