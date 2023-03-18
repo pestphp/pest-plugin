@@ -79,7 +79,10 @@ final class Loader
 
             self::$instances = array_map(
                 function ($class) use ($container) {
-                    return $container->get($class);
+                    /** @var object $object */
+                    $object = $container->get($class);
+
+                    return $object;
                 },
                 $pluginClasses
             );
