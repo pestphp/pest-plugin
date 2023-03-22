@@ -77,6 +77,8 @@ final class Loader
                 $pluginClasses = [];
             }
 
+            usort($pluginClasses, fn($pluginA, $pluginB) => str_starts_with($pluginA, 'Pest\\Plugin\\') ? 1 : 0);
+
             self::$instances = array_map(
                 function ($class) use ($container) {
                     /** @var object $object */
@@ -84,7 +86,7 @@ final class Loader
 
                     return $object;
                 },
-                $pluginClasses
+                $pluginClasses,
             );
 
             self::$loaded = true;

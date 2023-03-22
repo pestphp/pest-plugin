@@ -16,7 +16,8 @@ final class DumpCommand extends BaseCommand
 {
     protected function configure(): void
     {
-        $this->setName('pest:dump-plugins');
+        $this->setName('pest:dump-plugins')
+            ->setDescription('Dump all installed Pest plugins to the plugin cache.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
