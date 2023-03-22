@@ -71,13 +71,22 @@ final class Loader
             }
 
             try {
-                /** @var array<int, class-string>  $pluginClasses */
+                /** @var array<int, class-string> $pluginClasses */
                 $pluginClasses = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
             } catch (JsonException $ex) {
                 $pluginClasses = [];
             }
 
-            usort($pluginClasses, fn($pluginA, $pluginB) => str_starts_with($pluginA, 'Pest\\Plugin\\') ? 1 : 0);
+            usort($pluginClasses, function (string $pluginA, string $pluginB) {
+                $isOfficialPlugin = fn (string $plugin) => str_starts_with($plugin, 'Pest\\Plugins\\');
+
+                return match (true) {
+                    $isOfficialPlugin($pluginA) && $isOfficialPlugin($pluginB),
+                    ! $isOfficialPlugin($pluginA) && ! $isOfficialPlugin($pluginB) => 0,
+                    $isOfficialPlugin($pluginA) => 1,
+                    default => -1,
+                };
+            });
 
             self::$instances = array_map(
                 function ($class) use ($container) {
