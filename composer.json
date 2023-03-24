@@ -18,7 +18,7 @@
         "composer-plugin-api": "^2.0.0"
     },
     "conflict": {
-        "pestphp/pest": "<2.0"
+        "pestphp/pest": "<2.2.3"
     },
     "autoload": {
         "psr-4": {
@@ -32,9 +32,9 @@
         }
     },
     "require-dev": {
-        "composer/composer": "^2.5.4",
+        "composer/composer": "^2.5.5",
         "pestphp/pest-dev-tools": "^2.5.0",
-        "pestphp/pest": "^2.0.0"
+        "pestphp/pest": "^2.2.3"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
