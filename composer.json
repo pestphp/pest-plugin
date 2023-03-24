@@ -27,7 +27,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Pest\\Plugins\\": "tests/Stubs/PestPlugins"
         }
     },
     "require-dev": {
