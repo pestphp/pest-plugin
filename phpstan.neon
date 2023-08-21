@@ -8,10 +8,6 @@ parameters:
     paths:
         - src
 
-    ergebnis:
-        classesAllowedToBeExtended:
-            - Composer\Command\BaseCommand
-
     checkMissingIterableValueType: true
     checkGenericClassInNonGenericObjectType: false
     reportUnmatchedIgnoredErrors: true
