@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 /**
  * @internal
  */
-final class Manager implements PluginInterface, EventSubscriberInterface, Capable
+final class Manager implements Capable, EventSubscriberInterface, PluginInterface
 {
     /**
      * Holds the pest plugins file.
