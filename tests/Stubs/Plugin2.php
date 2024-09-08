@@ -2,6 +2,4 @@
 
 namespace Tests\Stubs;
 
-class Plugin2 implements AnotherDummyInterface, YetAnotherDummyInterface
-{
-}
+class Plugin2 implements AnotherDummyInterface, YetAnotherDummyInterface {}

@@ -29,7 +29,7 @@ final class Loader
     /**
      * returns an array of pest plugins to execute.
      *
-     * @param  string  $interface the interface for the hook to execute
+     * @param  string  $interface  the interface for the hook to execute
      * @return array<int, object> list of plugins
      */
     public static function getPlugins(string $interface): array

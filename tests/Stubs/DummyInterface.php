@@ -2,6 +2,4 @@
 
 namespace Tests\Stubs;
 
-interface DummyInterface
-{
-}
+interface DummyInterface {}

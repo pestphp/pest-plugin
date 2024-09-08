@@ -6,6 +6,4 @@ namespace Pest\Plugins;
 
 use Tests\Stubs\YetAnotherDummyInterface;
 
-class PluginOne implements YetAnotherDummyInterface
-{
-}
+class PluginOne implements YetAnotherDummyInterface {}

@@ -6,9 +6,9 @@ use Pest\Plugin\Manager;
 use Pest\Plugin\PestCommandProvider;
 
 beforeEach(function () {
-    $this->manager = new Manager();
-    $this->io = new NullIO();
-    $this->composer = (new Factory())->createComposer($this->io);
+    $this->manager = new Manager;
+    $this->io = new NullIO;
+    $this->composer = (new Factory)->createComposer($this->io);
 });
 
 it('exists')->assertTrue(class_exists(Manager::class));

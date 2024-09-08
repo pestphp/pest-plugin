@@ -18,7 +18,7 @@ final class PestCommandProvider implements CommandProviderCapability
     public function getCommands(): array
     {
         return [
-            new DumpCommand(),
+            new DumpCommand,
         ];
     }
 }

@@ -71,13 +71,11 @@ final class Manager implements Capable, EventSubscriberInterface, PluginInterfac
 
     public function registerPlugins(): void
     {
-        $cmd = new DumpCommand();
+        $cmd = new DumpCommand;
         $cmd->setComposer($this->composer);
         $cmd->run(new ArrayInput([]), new ConsoleOutput(ConsoleOutput::VERBOSITY_NORMAL, true));
     }
 
     /** {@inheritdoc} */
-    public function deactivate(Composer $composer, IOInterface $io): void
-    {
-    }
+    public function deactivate(Composer $composer, IOInterface $io): void {}
 }
