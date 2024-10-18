@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @internal
  */
-final class DumpCommand extends BaseCommand // @phpstan-ignore-line
+final class DumpCommand extends BaseCommand
 {
     protected function configure(): void
     {
