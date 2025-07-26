@@ -60,7 +60,7 @@ final class Loader
         if (! self::$loaded) {
             $cachedPlugins = sprintf(
                 '%s/../pest-plugins.json',
-                $GLOBALS['_composer_bin_dir'] ?? getcwd().'/vendor/bin',
+                $GLOBALS['_composer_bin_dir'] ?? __DIR__.'/../../../../vendor/bin',
             );
             $container = Container::getInstance();
 
