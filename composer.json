@@ -34,8 +34,8 @@
     },
     "require-dev": {
         "composer/composer": "^2.8.10",
-        "pestphp/pest-dev-tools": "^4.0.0",
-        "pestphp/pest": "^4.0.0"
+        "pestphp/pest-dev-tools": "^5.0.0",
+        "pestphp/pest": "^5.0.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
