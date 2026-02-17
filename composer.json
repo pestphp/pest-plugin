@@ -33,7 +33,7 @@
         }
     },
     "require-dev": {
-        "composer/composer": "^2.8.10",
+        "composer/composer": "^2.9.5",
         "pestphp/pest-dev-tools": "^5.0.0",
         "pestphp/pest": "^5.0.0"
     },
