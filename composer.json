@@ -14,7 +14,7 @@
     "license": "MIT",
     "type": "composer-plugin",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "composer-plugin-api": "^2.0.0",
         "composer-runtime-api": "^2.2.2"
     },
