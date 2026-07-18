@@ -7,6 +7,7 @@ namespace Pest\Plugin;
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\IO\IOInterface;
+use Composer\Plugin\Capability\CommandProvider;
 use Composer\Plugin\Capable;
 use Composer\Plugin\PluginInterface;
 use Pest\Plugin\Commands\DumpCommand;
@@ -65,7 +66,7 @@ final class Manager implements Capable, EventSubscriberInterface, PluginInterfac
     public function getCapabilities()
     {
         return [
-            \Composer\Plugin\Capability\CommandProvider::class => PestCommandProvider::class,
+            CommandProvider::class => PestCommandProvider::class,
         ];
     }
 
