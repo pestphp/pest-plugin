@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        php: ['8.4', '8.5']
+        php: ['8.4', '8.5', '8.6']
         dependency-version: [prefer-lowest, prefer-stable]
         parallel: ['', '--parallel']
 
@@ -24,7 +24,7 @@ jobs:
         fetch-depth: 0
 
     - name: Setup PHP
-      uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # v2
+      uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
       with:
         php-version: ${{ matrix.php }}
         tools: composer:v2
